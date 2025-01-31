@@ -1,0 +1,123 @@
+﻿<Window x:Class="TarifRehberi.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tarif Rehberi" Height="600" Width="800"
+        WindowState="Maximized"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
+
+    
+    <Window.Resources>
+       
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#357ABD"/>
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="#357ABD"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="15"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4A8ED4"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Black" BlurRadius="15" Direction="320" ShadowDepth="6"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+               
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#2B6CA3"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="0.95" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="0.95" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" To="1" Duration="0:0:0.1"/>
+                                <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" To="1" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+       
+        <Border Background="#357ABD" DockPanel.Dock="Top" Height="60">
+            <TextBlock Text="TARİF REHBER UYGULAMASI" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+        </Border>
+
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+               
+                <ColumnDefinition Width="250"/>
+                
+                <ColumnDefinition/>
+                <ColumnDefinition Width="99*"/>
+            </Grid.ColumnDefinitions>
+
+           
+            <StackPanel Grid.Column="0" Background="White" VerticalAlignment="Top">
+                
+                <Button Content="Tarifler" Name="HomeButton" Click="HomeButton_Click" Style="{StaticResource ModernButtonStyle}">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Button.RenderTransform>
+                </Button>
+
+                <Button Content="Tarif İşlemleri" Name="RecipesButton" Click="RecipesButton_Click" Style="{StaticResource ModernButtonStyle}">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Button.RenderTransform>
+                </Button>
+
+              
+                <Button Content="Malzeme İşlemleri" Name="AboutButton" Click="AboutButton_Click" Style="{StaticResource ModernButtonStyle}">
+                    <Button.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Button.RenderTransform>
+                </Button>
+
+            </StackPanel>
+
+            <Image Grid.Column="0" Grid.Row="1" Source="C:\Users\LENOVO\source\repos\TarifRehberi\TarifRehberi\resim\pngwing.com (7)ad.png"
+           Width="180" Height="180" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20"/>
+
+           
+            <Frame Grid.Column="1" Name="ContentArea" Grid.ColumnSpan="2" />
+            <Border x:Name="HomeImageBorder" BorderBrush="#357ABD" BorderThickness="1" Padding="10" Margin="40,30,10,10" Grid.Column="2">
+                <Image Source="C:\Users\LENOVO\source\repos\TarifRehberi\TarifRehberi\resim\anasayfa11.jpeg"
+                       Stretch="UniformToFill" />
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
